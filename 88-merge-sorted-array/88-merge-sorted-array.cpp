@@ -4,28 +4,34 @@ public:
         int i,j;
         i=0;j=0;
         int idx;
-        // if(m==0){
-        //     nums1
-        // }
         if(n==0){
             return;
         }
         while(i<m){
-            if(nums1[i]==0){
-                idx=i;
-            }
+            // if(nums1[i]==0){
+            //     nums1.pop_back();
+            // }
             if(nums1[i]>nums2[0]){
                 swap(nums1[i],nums2[0]);
                 i++;
-                sort(nums2.begin(),nums2.end());
+                int k=nums2[0];
+                for(j=1;j<n;j++){
+                    if(k<=nums2[j]){
+                        break;
+                    }
+                    nums2[j-1]=nums2[j];
+                    
+                }
+                nums2[j-1]=k;
             }
             else{
                 i++;
             }
         }
-        for(auto k:nums2){
-            nums1[i]=k;
-            i++;
+        j=0;
+        for(i=m;i<(m+n);i++){
+            nums1[i]=nums2[j];
+            j++;
         }
     }
 };
